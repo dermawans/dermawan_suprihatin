@@ -109,6 +109,13 @@
 											<span>Dashboard</span>
 										</a>
 									</li>
+                                    <li class="nav-<?php if(isset($active_item_in)){echo $active_item_in ;}?>">
+										<a href="<?php echo site_url('item_in')?>">
+											<span class="pull-right label label-primary"><?php echo $jumlah_item_in ; ?></span>
+											<i class="fa fa-download" aria-hidden="true"></i>
+											<span>Item In</span>
+										</a>
+									</li>
                                     <li class="nav-<?php if(isset($active_item_list)){echo $active_item_list ;}?>">
 										<a href="<?php echo site_url('item')?>">
 											<span class="pull-right label label-primary"><?php echo $jumlah_item ; ?></span>

@@ -18,6 +18,7 @@ class Dashboard extends CI_Controller{
             'active_dashboard'=>"active");
 		$params = array('id_user'=>  $this->session->userdata('id_user'));
 		$data['user'] = json_decode($this->curl->simple_get($this->API.'/api/user',$params));
+		$data['jumlah_item_in'] = json_decode($this->curl->simple_get($this->API.'/api/jumlah_item_in',$params));
 		$data['jumlah_item'] = json_decode($this->curl->simple_get($this->API.'/api/jumlah_item',$params));
 		
 		$this->load->view('element/v_header',$data);

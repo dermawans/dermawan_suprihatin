@@ -174,10 +174,36 @@ class Api extends REST_Controller
 				$user = $this->model_api->getItem();
 			$this->response($user, 200);
 		}
+	// show data item in
+		function item_in_get() {
+				$user = $this->model_api->getItemIn();
+			$this->response($user, 200);
+		}
+	
+	// show data item in header
+		function item_in_header_get() {
+        $id_item_in = $this->get('id_item_in');
+				$user = $this->model_api->getItemInHeader($id_item_in);
+			$this->response($user, 200);
+		}
+	
+	
+	// show data item in data
+		function item_in_data_get() {
+        $id_item_in = $this->get('id_item_in');
+				$user = $this->model_api->getItemInData($id_item_in);
+			$this->response($user, 200);
+		}
 	
 	// hitung data item
 		function jumlah_item_get() {
 				$user = $this->model_api->getAllDataItemNumber();
+			$this->response($user, 200);
+		}
+	
+	// hitung data item in
+		function jumlah_item_in_get() {
+				$user = $this->model_api->getAllDataItemInNumber();
 			$this->response($user, 200);
 		}
 	
