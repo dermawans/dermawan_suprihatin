@@ -30,5 +30,6 @@
 		<script src="<?php echo base_url('assets/javascripts/tables/examples.datatables.row.with.details.js')?>"></script>
 		<script src="<?php echo base_url('assets/javascripts/tables/examples.datatables.tabletools.js')?>"></script>
 		<script src="<?php echo base_url('assets/javascripts/ui-elements/examples.modals.js')?>"></script>
+		<script src="<?php echo base_url('assets/add_item_in/jquery_append_add_item_in.js')?>"></script>
 	</body>
 </html>

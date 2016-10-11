@@ -8,7 +8,7 @@
     
     <div class="panel-body">
         <div class="table-responsive">
-        	<a href="<?php echo site_url('item_in/pages_add_item_in')?>" class="btn btn-default btn-sm" data-toggle="modal"><i class="fa fa-plus-circle"></i> Add Data</a>
+        	<a href="<?php echo site_url('item_in/add_item_in')?>" class="btn btn-default btn-sm" data-toggle="modal"><i class="fa fa-plus-circle"></i> Add Data</a>
         <table class="table table-bordered table-striped table-condensed mb-none" id="datatable-tabletools" data-swf-path="<?php echo base_url(); ?>assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
             <thead>
                 <tr>

@@ -12,8 +12,7 @@ class Item_in extends CI_Controller{
 		$data=array(); 
     }
 	
-    function index(){
-		
+    function index(){ 
         $data=array('title'=>"Item In",
             'active_item_in'=>"active"
 			);
@@ -28,7 +27,6 @@ class Item_in extends CI_Controller{
     }
 	
     function detail_item_in(){
-		
         $data=array('title'=>"Item In",
             'active_item_in'=>"active"
 			);
@@ -42,5 +40,21 @@ class Item_in extends CI_Controller{
         $this->load->view('pages/v_detail_item_in',$data);
         $this->load->view('element/v_footer');
     }
+	
+	function add_item_in(){
+        $data=array('title'=>"Add Item In",
+            'active_item_in'=>"active"
+			);
+		$params = array('userID'=>  $this->session->userdata('userID'),'id_item_in'=> $this->uri->segment(3)); 
+		$data['id_item_in'] = json_decode($this->curl->simple_get($this->API.'/api/get_id_item_in',$params));
+		$data['data_inventory_agen'] = json_decode($this->curl->simple_get($this->API.'/api/get_data_inventory_agen',$params));
+		$data['data_giver'] = json_decode($this->curl->simple_get($this->API.'/api/get_data_delivery_service',$params));
+		$data['jumlah_item_in'] = json_decode($this->curl->simple_get($this->API.'/api/jumlah_item_in',$params));
+		$data['jumlah_item'] = json_decode($this->curl->simple_get($this->API.'/api/jumlah_item',$params));
+		
+        $this->load->view('element/v_header',$data);
+        $this->load->view('pages/v_add_item_in');
+        $this->load->view('element/v_footer');
+	}
 		
 }

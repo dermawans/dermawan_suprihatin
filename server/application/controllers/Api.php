@@ -195,6 +195,24 @@ class Api extends REST_Controller
 			$this->response($user, 200);
 		}
 	
+	// ambil data nomor baru item in
+		function get_id_item_in_get() { 
+				$user = $this->model_api->getIDItemIn();
+			$this->response($user, 200);
+		}
+	
+	// ambil data inventory agen
+		function get_data_inventory_agen_get() { 
+				$user = $this->model_api->getDataInventoryAgen();
+			$this->response($user, 200);
+		}
+	
+	// ambil data delivery service / giver
+		function get_data_delivery_service_get() { 
+				$user = $this->model_api->getDataDeliveryService();
+			$this->response($user, 200);
+		}
+	
 	// hitung data item
 		function jumlah_item_get() {
 				$user = $this->model_api->getAllDataItemNumber();

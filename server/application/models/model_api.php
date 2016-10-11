@@ -152,6 +152,53 @@ class Model_api extends CI_Model{
 		}
     }
 	
+	// Bikin nomor urut item in =================
+     function getIDItemIn()
+    {
+        $query = $this->db->query("select MAX(RIGHT(id_item_in,5)) as kd_max from tbl_master_item_in");
+        $kd = "";
+        if($query->num_rows()>0)
+        {
+            foreach($query->result() as $k)
+            {
+                $tmp = ((int)$k->kd_max)+1;
+                $kd = sprintf("%09s", $tmp);
+            }
+			$month = date("m");
+			$year = date("Y");
+        }
+        else
+        {
+            $kd = "000000001";
+        }
+        return $year."/".$month."/IND/II/".$kd;
+    } 
+	
+	
+	//ambil data inventory agen
+	function getDataInventoryAgen()
+	{
+       $query = $this->db->query("select a.id_agen,a.agen_name,b.id_agen,b.level,b.status 
+	   from tbl_master_agen a left join tbl_master_user b on a.id_agen=b.id_agen
+	   where b.level='inventory_admin' order by a.id_agen asc");
+       if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
+    }
+	
+	//ambil data dalivery service
+	function getDataDeliveryService()
+	{
+       $query = $this->db->query("select * from tbl_master_delivery_service");
+       if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
+    }
+	
 }
 ?>
 	 
