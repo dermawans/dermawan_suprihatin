@@ -37,7 +37,9 @@
                             <div class="bill-to">
                                 <p class="h5 mb-xs text-dark text-weight-semibold">Received By : </p>
                                 <address>
-                                    <?php echo $row->agen_name; ?>           
+                                    <?php echo $row->agen_name; ?><br />
+                                    <?php echo $row->agen_address; ?><br />
+                                    <?php if($row->agen_phone_number_2 == ""){ echo $row->agen_phone_number_1; echo "<br />"; } else {?><?php echo $row->agen_phone_number_1; echo", "; echo $row->agen_phone_number_2; echo "<br />"; ?><?php } ?>              
                                 </address>
                             </div>
                         </div>

@@ -115,7 +115,7 @@ class Model_api extends CI_Model{
 	{	
        $query = $this->db->query("select distinct
 		a.no_id_item_in, a.id_item_in as id_item_in_master_item_in, a.date_in, a.note as master_item_in_note, 
-		b.id_item_in, b.id_delivery_service, b.id_agen, 
+		b.id_item_in, b.id_delivery_service, b.id_user, 
 		c.id_delivery_service as id_delivery_service_master_delivery_service ,c.delivery_service_name, 
 		d.agen_name,d.agen_phone_number_1,d.agen_phone_number_2,d.agen_address,d.agen_type,d.no_unique_agen
 		 
