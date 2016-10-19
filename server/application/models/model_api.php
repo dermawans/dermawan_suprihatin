@@ -64,9 +64,19 @@ class Model_api extends CI_Model{
     }
 	
 	
-	//hitung jumlah item
+	//hitung jumlah item in
 	function getAllDataItemInNumber(){
 		$query = $this->db->query("select * from tbl_master_item_in order by id_item_in desc");
+		if($query->num_rows() > 0) {
+        return $query->num_rows();
+		} else {
+            return $query->num_rows(); //if data is wrong
+		}
+    }
+	
+	//hitung jumlah item out
+	function getAllDataItemOutNumber(){
+		$query = $this->db->query("select * from tbl_master_item_out order by id_item_out desc");
 		if($query->num_rows() > 0) {
         return $query->num_rows();
 		} else {
@@ -95,14 +105,30 @@ class Model_api extends CI_Model{
 	function getItemIn()
 	{
        $query = $this->db->query("select distinct
-		a.no_id_item_in, a.id_item_in as id_item_in_master_item_in, a.date_in, a.note, 
-		b.id_item_in, b.id_delivery_service,b.id_agen as id_agen_detail_item_in, 
-		c.id_delivery_service as id_delivery_service_master_delivery_service ,c.delivery_service_name, 
+		a.no_id_item_in, a.id_item_in , a.date_in, a.id_sender, a.id_receiver,a.note, 
+		c.id_delivery_service,c.delivery_service_name, 
 		d.id_agen,d.agen_name
-			from tbl_master_item_in a left join tbl_detail_item_in b on a.id_item_in=b.id_item_in
-			left join tbl_master_delivery_service c on b.id_delivery_service=c.id_delivery_service 
-			left join tbl_master_agen d on b.id_agen=d.id_agen
+			from tbl_master_item_in a left join tbl_master_delivery_service c on a.id_sender=c.id_delivery_service 
+			left join tbl_master_agen d on a.id_receiver=d.id_agen
 			order by a.id_item_in desc");
+       if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
+    }
+	
+	
+	//ambil data barang masuk
+	function getItemOut()
+	{
+       $query = $this->db->query("select distinct
+		a.no_id_item_out, a.id_item_out , a.date_out, a.id_sender, a.id_receiver, a.note, 
+		c.id_delivery_service,c.delivery_service_name, 
+		d.id_agen,d.agen_name,d.agen_operational_name
+			from tbl_master_item_out a left join tbl_master_delivery_service c on a.id_sender=c.id_delivery_service 
+			left join tbl_master_agen d on a.id_receiver=d.id_agen
+			order by a.id_item_out desc");
        if($query->num_rows() > 0) {
         return $query->result();
 		} else {
@@ -114,14 +140,11 @@ class Model_api extends CI_Model{
 	function getItemInHeader($id_item_in)
 	{	
        $query = $this->db->query("select distinct
-		a.no_id_item_in, a.id_item_in as id_item_in_master_item_in, a.date_in, a.note as master_item_in_note, 
-		b.id_item_in, b.id_delivery_service, b.id_user, 
-		c.id_delivery_service as id_delivery_service_master_delivery_service ,c.delivery_service_name, 
-		d.agen_name,d.agen_phone_number_1,d.agen_phone_number_2,d.agen_address,d.agen_type,d.no_unique_agen
-		 
-			from tbl_master_item_in a left join tbl_detail_item_in b on a.id_item_in=b.id_item_in
-			left join tbl_master_delivery_service c on b.id_delivery_service=c.id_delivery_service
-			left join tbl_master_agen d on b.id_agen=d.id_agen
+		a.no_id_item_in, a.id_item_in , a.date_in, a.id_sender, a.id_receiver,a.note, 
+		c.id_delivery_service,c.delivery_service_name, 
+		d.id_agen,d.agen_name
+			from tbl_master_item_in a left join tbl_master_delivery_service c on a.id_sender=c.id_delivery_service 
+			left join tbl_master_agen d on a.id_receiver=d.id_agen 
 			where a.id_item_in='".$id_item_in."' order by a.no_id_item_in desc
 		");
        if($query->num_rows() > 0) {
@@ -162,18 +185,62 @@ class Model_api extends CI_Model{
             foreach($query->result() as $k)
             {
                 $tmp = ((int)$k->kd_max)+1;
-                $kd = sprintf("%09s", $tmp);
+                $kd = sprintf("%06s", $tmp);
             }
 			$month = date("m");
 			$year = date("Y");
         }
         else
         {
-            $kd = "000000001";
+            $kd = "000001";
         }
         return $year."/".$month."/IND/II/".$kd;
     } 
 	
+	// Bikin nomor urut item out =================
+     function getIDItemOut()
+    {
+        $query = $this->db->query("select MAX(RIGHT(id_item_out,5)) as kd_max from tbl_master_item_out");
+        $kd = "";
+        if($query->num_rows()>0)
+        {
+            foreach($query->result() as $k)
+            {
+                $tmp = ((int)$k->kd_max)+1;
+                $kd = sprintf("%06s", $tmp);
+            }
+			$month = date("m");
+			$year = date("Y");
+        }
+        else
+        {
+            $kd = "000001";
+        }
+        return $year."/".$month."/IND/IO/".$kd;
+    } 
+	
+	
+	// Bikin nomor urut item  =================
+     function getIDItem()
+    {
+        $query = $this->db->query("select MAX(RIGHT(id_item,7)) as kd_max from tbl_master_item");
+        $kd = "";
+        if($query->num_rows()>0)
+        {
+            foreach($query->result() as $k)
+            {
+                $tmp = ((int)$k->kd_max)+1;
+                $kd = sprintf("%07s", $tmp);
+            }
+			$month = date("m");
+			$year = date("y");
+        }
+        else
+        {
+            $kd = "0000001";
+        }
+        return "IND".$year.$month."i".$kd;
+    } 
 	
 	//ambil data inventory agen
 	function getDataInventoryAgen()
@@ -198,6 +265,48 @@ class Model_api extends CI_Model{
             return $query->result(); //if data is wrong
 		}
     }
+	
+	//ambil data inventory agen
+	function getDataAgen()
+	{
+       $query = $this->db->query("select * from tbl_master_agen where agen_type='Laku' and status='Approve'");
+       if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
+    }
+	
+	function getDataItemNotOut(){
+		return $this->db->query("select
+		a.id_item, a.item_name, a.esn, a.sn, a.total, a.status, a.contents, a.note, a.inputer,
+		b.id_category, b.id_item_in, b.id_item_out,
+		c.id_item_out,
+		d.id_sender, d.id_receiver, d.date_out, d.note,
+		e.id_agen, e.agen_name,
+		f.id_delivery_service,f.delivery_service_name
+		
+		from tbl_master_item a 
+		left join tbl_detail_item b on a.id_item=b.id_item 
+		left join tbl_detail_item_out c on a.id_item=c.id_item 
+		left join tbl_master_item_out d on c.id_item_out=d.id_item_out
+		left join tbl_master_agen e on d.id_receiver=e.id_agen
+		left join tbl_master_delivery_service f on d.id_sender=f.id_delivery_service
+		 order by a.id_item desc"
+		)->result();
+	}
+	
+	function getDataAgenNotOut(){
+		return $this->db->query("select
+		a.id_agen,a.agen_name,a.agen_operational_name, a.agen_type, a.status
+
+		from  tbl_master_agen a  
+	,tbl_master_item_out b 
+		where b.id_receiver<>a.id_agen and a.agen_type='Laku' and a.status='Approve'
+		 order by a.id_agen desc"
+		)->result();
+	}
+	
 	
 }
 ?>

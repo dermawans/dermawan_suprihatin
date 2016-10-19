@@ -6,34 +6,34 @@
                 <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a> 
             </div>
 
-            <h2 class="panel-title">Add Item In</h2>
+            <h2 class="panel-title">Add Item Out</h2>
         </header>
         <div class="panel-body">
         <!-- start form -->
-        <?php echo form_open_multipart('item_in/save_item_in','id="wizard" class="form-horizontal"'); ?> 
+        <?php echo form_open_multipart('item_out/save_item_out','id="wizard" class="form-horizontal"'); ?> 
         
 		<div class="form-group">
         <label class="col-md-2 control-label">Date</label>
          	<div class="col-md-3">
-            	<input type="text" name="date_in" id="date_in" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" readonly>
+            	<input type="text" name="date_out" id="date_out" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" readonly>
         	</div>
         </div>
         
 		<div class="form-group">
         <label class="col-md-2 control-label">Receive Number</label>
          	<div class="col-md-3">
-            	<input type="text" class="form-control" name="id_item_in" id="id_item_in" value="<?php echo $id_item_in; ?>" readonly>
+            	<input type="text" class="form-control" name="id_item_out" id="id_item_out" value="<?php echo $id_item_out; ?>" readonly>
         	</div>
         </div>
           
 		<div class="form-group">
-            <label class="col-md-2 control-label">Receive From</label>
+            <label class="col-md-2 control-label">Sender</label>
             <div class="col-md-3">
                 <select data-plugin-selectTwo class="form-control populate" id="id_sender" name="id_sender"  data-placeholder="Chose Given" required> 
                          	<option value=""></option>
                     <?php
-                    if(isset($data_giver)){
-                        foreach($data_giver as $row){
+                    if(isset($data_sender)){
+                        foreach($data_sender as $row){
                             ?>
                             <option value="<?php echo $row->id_delivery_service;?>"><?php echo $row->delivery_service_name;?></option>
                         <?php
@@ -45,15 +45,15 @@
          </div>
          
 		<div class="form-group">
-            <label class="col-md-2 control-label">Receive By</label>
+            <label class="col-md-2 control-label">Receiver</label>
             <div class="col-md-3">
                 <select data-plugin-selectTwo class="form-control populate" id="id_receiver" name="id_receiver"  data-placeholder="Chose Receiver" required> 
                     <option value=""></option>
                     <?php   
-                    if(isset($data_inventory_agen)){
-                        foreach($data_inventory_agen as $row){
+                    if(isset($data_agen)){
+                        foreach($data_agen as $row){
                     ?>
-                    <option value="<?php echo $row->id_agen;?>"><?php echo $row->agen_name;?></option>
+                    <option value="<?php echo $row->id_agen;?>"><?php echo $row->agen_name;?> - <?php echo $row->agen_operational_name;?></option>
                     <?php
                             }
                         } 

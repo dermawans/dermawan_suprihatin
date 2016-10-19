@@ -1,23 +1,26 @@
-<section class="panel">
-    <header class="panel-heading">
-        <div class="panel-actions">
-            <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a> 
-        </div>
-        <h2 class="panel-title">Item In</h2>
-    </header>
-    
-    
+<html>
+	<head>
+		<title>Item In Print</title>
+		<!-- Web Fonts  -->
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.css')?>" />
+
+		<!-- Invoice Print Style -->
+		<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/invoice-print.css')?>" />
+
+    </head>
+	<body>
+
 	<?php
       if(isset($item_in_header)){
       foreach($item_in_header as $row){
     ?>
-    
-    <section class="panel">
-        <div class="panel-body">
-            <div class="invoice">
-                <header class="clearfix">
-                    <div class="row">
-                        <div class="col-sm-6 mt-md">
+		<div class="invoice">
+			<header class="clearfix">
+				<div class="row">
+					<div class="col-sm-6 mt-md">
                             <h2 class="h2 mt-none mb-sm text-dark text-weight-bold">Receipt Item In</h2>
                             <h4 class="h4 m-none text-dark text-weight-bold">Receipt Number : <?php echo $row->id_item_in; ?></h4>
                         </div>
@@ -25,7 +28,7 @@
                             <address class="ib mr-xlg">
                                 <br />
                                <div class="ib">
-                                    <img src="<?php echo base_url()?>client/assets/images/Logo.png" alt="Indepay Logo" width="232px" height="78px"/>
+                                  <!--  <img src="<?php echo base_url()?>assets/images/logo.png" alt="Indepay Logo" width="232px" height="78px"/>-->
                                 </div>
                             </address>
                         </div>
@@ -35,11 +38,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="bill-to">
-                                <p class="h5 mb-xs text-dark text-weight-semibold">Received By : </p>
+                                <p class="h5 mb-xs text-dark text-weight-semibold">To : </p>
                                 <address>
-                                    <?php echo $row->agen_name; ?><br />
-                                    <?php echo $row->agen_address; ?><br />
-                                    <?php if($row->agen_phone_number_2 == ""){ echo $row->agen_phone_number_1; echo "<br />"; } else {?><?php echo $row->agen_phone_number_1; echo", "; echo $row->agen_phone_number_2; echo "<br />"; ?><?php } ?>              
+                                    <?php echo $row->agen_name; ?><br />              
                                 </address>
                             </div>
                         </div>
@@ -55,7 +56,7 @@
                                 </p>
                                 <p class="mb-none">
                                     <span class="text-dark">Note : </span>
-                                    <span class="value"><?php echo$row->master_item_in_note; ?></span>
+                                    <span class="value"><?php echo$row->note; ?></span>
                                 </p>
                             </div>
                         </div>
@@ -96,19 +97,14 @@
                     </table>
                 </div>
             </div>
-
-            <div class="text-right mr-lg">
-                <a href="<?php echo site_url('item_in/print_item_in/'.$row->id_item_in)?>" target="_blank" class="btn btn-primary ml-sm"><i class="fa fa-print"></i> Print</a>
-	            <a href="<?php echo site_url('item_in')?>" class="btn ml-sm btn-dark">Back</a>
-            </div>
-        </div>
-    </section>
-    
-	<?php }
-    }
-    ?>                 
-   
-        </div>
-    </div>
-    
-</section>
+		<?php }
+        }
+        ?>       
+        
+        
+		<script>
+			window.print();
+		</script>
+    </body>
+</html>
+       

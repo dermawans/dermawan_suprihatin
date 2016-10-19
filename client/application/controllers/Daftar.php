@@ -18,14 +18,14 @@ class Daftar extends CI_Controller
 	
 	 // insert data mahasiswa
     function daftar(){
-	   $data = array(
-                'userID' =>  "",
-                'userName' =>  $this->input->post('userName'),
-                'userEmail'=>  $this->input->post('userEmail'),
-                'userPass' =>  md5($this->input->post('userPass')),
-				'userStatus' => "N",
-				'tokenCode' => md5($this->input->post('userEmail').$this->input->post('date')),
-                'date_create'=>  $this->input->post('date'));
+			$data = array(
+			'userID' =>  "",
+			'userName' =>  $this->input->post('userName'),
+			'userEmail'=>  $this->input->post('userEmail'),
+			'userPass' =>  md5($this->input->post('userPass')),
+			'userStatus' => "N",
+			'tokenCode' => md5($this->input->post('userEmail').$this->input->post('date')),
+			'date_create'=>  $this->input->post('date'));
             $insert =  $this->curl->simple_post($this->API.'/api/daftar', $data, array(CURLOPT_BUFFERSIZE => 10)); 
             if($insert)
             {

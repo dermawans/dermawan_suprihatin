@@ -5,7 +5,7 @@ $(document).ready(function() {
                     count += 1;
                 $('#container').append(
                            '<tr class="records">'
-                         + '<th><div id="'+count+'">' + count + '</div></th><input id="id_item_' + count + '" name="id_item_' + count + '" value="I_'+ count +'" type="hidden" readonly></th>'
+                         + '<th><div id="'+count+'">' + count + '</div></th><input id="id_item_' + count + '" name="id_item_' + count + '" value="I_'+ count +'" type="text" readonly></th>'
                          + '<th><select id="id_category_'+ count +'" name="id_category_'+ count +'"><option value="1">Micro ATM</option><option value="2">Power Adaptor Micro ATM</option><option value="3">Printer</option><option value="4">Power Adaptor Printer</option><option value="5">Dongle/Converter</option><option value="6">Router</option><option value="7">Modem</option><option value="8">SIM Card</option><option value="9">Other</option></select></th>'
                          + '<th><input id="item_name_' + count + '" name="item_name_' + count + '" type="text"></th>'
                          + '<th><input id="esn_' + count + '" name="esn_' + count + '" type="text"></th>'

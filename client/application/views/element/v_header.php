@@ -19,6 +19,7 @@
 
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/font-awesome/css/font-awesome.css')?>" />
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/magnific-popup/magnific-popup.css')?>" /> 
+<link rel="stylesheet" href="<?php echo base_url('assets/vendor/select2/select2.css')?>" />
  
 <!-- Table -->
 <link rel="stylesheet" href="<?php echo base_url('assets/vendor/jquery-datatables-bs3/assets/css/datatables.css')?>" /> 
@@ -34,6 +35,22 @@
  
 <!-- Head Libs -->
 <script src="<?php echo base_url('assets/vendor/modernizr/modernizr.js')?>"></script> 
+
+<!-- Chosen -->
+
+<link rel="stylesheet" href="<?php echo base_url('assets/chosen.css')?>">
+<script src="<?php echo base_url('assets/jquery.js')?>"></script>
+<script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js')?>"></script>/>
+<script src="<?php echo base_url('assets/chosen.jquery.js');?>"></script>
+   
+<script type="text/javascript">
+        $(function(){
+            $('.chzn-select').chosen();
+            $('.chzn-select-deselect').chosen({allow_single_deselect:true});
+        });
+
+</script>   
+      
    
 </head>
 
@@ -114,6 +131,13 @@
 											<span class="pull-right label label-primary"><?php echo $jumlah_item_in ; ?></span>
 											<i class="fa fa-download" aria-hidden="true"></i>
 											<span>Item In</span>
+										</a>
+									</li>
+                                    <li class="nav-<?php if(isset($active_item_out)){echo $active_item_out ;}?>">
+										<a href="<?php echo site_url('item_out')?>">
+											<span class="pull-right label label-primary"><?php echo $jumlah_item_out ; ?></span>
+											<i class="fa fa-upload" aria-hidden="true"></i>
+											<span>Item Out</span>
 										</a>
 									</li>
                                     <li class="nav-<?php if(isset($active_item_list)){echo $active_item_list ;}?>">

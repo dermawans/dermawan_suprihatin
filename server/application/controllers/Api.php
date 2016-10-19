@@ -147,9 +147,9 @@ class Api extends REST_Controller
     function cektoken_get() {
         $id_user = $this->get('id_user');
         $tokencode = $this->get('tokencode');
-           $this->db->where('id_user', $id_user);
-           $this->db->where('tokencode', $tokencode);
-            $user = $this->db->get('tbl_master_user')->result();
+		   $this->db->where('id_user', $id_user);
+		   $this->db->where('tokencode', $tokencode);
+			$user = $this->db->get('tbl_master_user')->result();
         $this->response($user, 200);
     }
 	
@@ -174,19 +174,25 @@ class Api extends REST_Controller
 				$user = $this->model_api->getItem();
 			$this->response($user, 200);
 		}
+		
 	// show data item in
 		function item_in_get() {
 				$user = $this->model_api->getItemIn();
 			$this->response($user, 200);
 		}
 	
-	// show data item in header
-		function item_in_header_get() {
-        $id_item_in = $this->get('id_item_in');
-				$user = $this->model_api->getItemInHeader($id_item_in);
+	// show data item in
+		function item_out_get() {
+				$user = $this->model_api->getItemOut();
 			$this->response($user, 200);
 		}
 	
+	// ambil data header item in
+    function get_data_item_in_get() {
+      $id_item_in = $this->get('id_item_in');
+      	$query = $this->model_api->getItemInHeader($id_item_in);
+			$this->response($query, 200);
+	}
 	
 	// show data item in data
 		function item_in_data_get() {
@@ -201,11 +207,50 @@ class Api extends REST_Controller
 			$this->response($user, 200);
 		}
 	
+	// ambil data nomor baru item out
+		function get_id_item_out_get() { 
+				$user = $this->model_api->getIDItemOut();
+			$this->response($user, 200);
+		}
+	
+	// ambil data nomor baru item 
+		function get_id_item_get() { 
+				$user = $this->model_api->getIDItem();
+			$this->response($user, 200);
+		}
+	
+	// ambil data category item
+		function get_data_category_item_get() { 
+            $user = $this->db->get('tbl_master_category')->result();
+			$this->response($user, 200);
+		}
+	
+	
 	// ambil data inventory agen
 		function get_data_inventory_agen_get() { 
 				$user = $this->model_api->getDataInventoryAgen();
 			$this->response($user, 200);
 		}
+	
+	// ambil data agen
+		function get_data_agen_get() { 
+				$user = $this->model_api->getDataAgen();
+			$this->response($user, 200);
+		}
+	 
+	
+	// ambil data barang yang belum keluar
+		function get_data_item_not_out_get() { 
+				$user = $this->model_api->getDataItemNotOut();
+			$this->response($user, 200);
+		}
+		
+	
+	// ambil data agen yang belum dikasih keluar
+		function get_data_agen_not_out_get() { 
+				$user = $this->model_api->getDataAgenNotOut();
+			$this->response($user, 200);
+		}	
 	
 	// ambil data delivery service / giver
 		function get_data_delivery_service_get() { 
@@ -224,6 +269,105 @@ class Api extends REST_Controller
 				$user = $this->model_api->getAllDataItemInNumber();
 			$this->response($user, 200);
 		}
+		
+	// hitung data item out
+		function jumlah_item_out_get() {
+				$user = $this->model_api->getAllDataItemOutNumber();
+			$this->response($user, 200);
+		}
 	
+    // tambah barang masuk
+    function save_item_in_post() {
+      	$data = array(
+		'id_item_in' => $this->post('id_item_in'),
+		'id_sender' => $this->post('id_sender'),
+		'id_receiver' => $this->post('id_receiver'),
+		'date_in' => $this->post('date_in'),
+		'note' => $this->post('note'),
+		'inputer' => $this->post('inputer'));
+					
+		$insert = $this->db->insert('tbl_master_item_in', $data);
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+ 	
+	 
+	// tambah master barang 
+    function save_master_item_post() {
+		
+      	$data = array(
+		'id_item' => $this->post('id_item'),
+		'item_name' => $this->post('item_name'),
+		'esn' => $this->post('esn'),
+		'sn' => $this->post('sn'),
+		'total' => $this->post('total'),
+		'status' => $this->post('status'),
+		'contents' => $this->post('contents'),
+		'note' => $this->post('note'),
+		'inputer' => $this->post('inputer'));
+		$insert1 = $this->db->insert('tbl_master_item', $data);
+		
+		if ($insert1) 
+		{
+			$data = array(
+			'id_item' => $this->post('id_item'), 
+			'id_item_in' => $this->post('id_item_in'), 
+			'inputer' => $this->post('inputer'));
+			$insert2 = $this->db->insert('tbl_detail_item_in', $data);
+			if ($insert2) 
+			{
+				$data = array(
+				'id_item' => $this->post('id_item'),
+				'id_category' => $this->post('id_category'),
+				'id_item_in' => $this->post('id_item_in'),
+				'id_agen' => $this->post('id_receiver'),
+				'inputer' => $this->post('inputer'));
+				$insert2 = $this->db->insert('tbl_detail_item', $data);
+				if ($insert2) 
+				{
+					$this->response($data, 200);
+				} else 
+				{
+					$this->response(array('status' => 'fail', 502));
+				}
+			} else 
+			{
+				$this->response(array('status' => 'fail', 502));
+			}
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	} 
+	 
+	 
+    // tambah barang keluar
+    function save_item_out_post() {
+      	$data = array(
+		'id_item_out' => $this->post('id_item_out'),
+		'id_sender' => $this->post('id_sender'),
+		'id_receiver' => $this->post('id_receiver'),
+		'date_out' => $this->post('date_out'),
+		'note' => $this->post('note'),
+		'inputer' => $this->post('inputer'));
+					
+		$insert = $this->db->insert('tbl_master_item_out', $data);
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+ 	
+	 
 }
 ?>
