@@ -187,6 +187,14 @@ class Api extends REST_Controller
 			$this->response($user, 200);
 		}
 	
+	// show data agen
+		function agen_get() {
+        	$type = "LAKU";
+			$this->db->where('agen_type', $type);
+            $user = $this->db->get('tbl_master_agen')->result();
+			$this->response($user, 200);
+		}
+	
 	// ambil data header item in
     function get_data_item_in_get() {
       $id_item_in = $this->get('id_item_in');
@@ -252,6 +260,27 @@ class Api extends REST_Controller
 			$this->response($user, 200);
 		}
 	
+	// ambil data nomor baru agen
+		function get_id_agen_get() { 
+				$user = $this->model_api->getIDAgen();
+			$this->response($user, 200);
+		}
+	
+	
+	
+	// ambil data tipe agen
+		function get_master_agen_type_get() { 
+            $user = $this->db->get('tbl_master_agen_type')->result();
+			$this->response($user, 200);
+		}
+		
+	
+	// ambil data status agen
+		function get_master_status_agen_get() { 
+            $user = $this->db->get('tbl_master_status_agen')->result();
+			$this->response($user, 200);
+		}
+	
 	// ambil data category item
 		function get_data_category_item_get() { 
             $user = $this->db->get('tbl_master_category')->result();
@@ -314,6 +343,12 @@ class Api extends REST_Controller
 	// hitung data item out
 		function jumlah_item_out_get() {
 				$user = $this->model_api->getAllDataItemOutNumber();
+			$this->response($user, 200);
+		}
+	
+	// hitung data agen
+		function jumlah_agen_get() {
+				$user = $this->model_api->getAllDataAgenNumber();
 			$this->response($user, 200);
 		}
 	
@@ -452,5 +487,122 @@ class Api extends REST_Controller
 	}
  	
 	 
+    // tambah agen baru
+    function save_item_out_post() {
+      	$data = array(
+			'id_agen' => $this->post('id_agen'),
+			'agen_name' => $this->post('agen_name'),
+			'status' => $this->post('status'),
+			'agen_phone_number_1' => $this->post('agen_phone_number_1'),
+			'agen_phone_number_2' => $this->post('agen_phone_number_2'),
+			'agen_address' => $this->post('agen_address'),
+			'agen_city' => $this->post('agen_city'),
+			'agen_province' => $this->post('agen_province'),
+			'longitude' => $this->post('longitude'),
+			'latitude' => $this->post('latitude'),
+			'terminal_id' => $this->post('terminal_id'),
+			'no_unique_agen' => $this->post('no_unique_agen'),
+			'virtual_account_number' => $this->post('virtual_account_number'),
+			'virtual_account_name' => $this->post('virtual_account_name'), 
+			'agen_operational_name' => $this->post('agen_operational_name'),
+			'agen_operational_address' => $this->post('agen_operational_address'),
+			'agen_nearest_branch' => $this->post('agen_nearest_branch'),
+			'agen_type' => $this->post('agen_type'),
+			'note' => $this->post('note'),
+			'date_of_interested' => $this->post('date_of_interested'),
+			'inputer' => $this->post('inputer'));
+					
+		$insert = $this->db->insert('tbl_master_agen', $data);
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+ 	
+	
+    // tambah foto tampak depan agen
+    function update_foto_tampak_depan_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_tampak_depan_agen' => $this->put('foto_tampak_depan_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto tampak seberang agen
+    function update_foto_tampak_seberang_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_tampak_seberang_agen' => $this->put('foto_tampak_seberang_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto tampak kanan agen
+    function update_foto_tampak_kanan_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_tampak_kanan_agen' => $this->put('foto_tampak_kanan_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto tampak kiri agen
+    function update_foto_tampak_kiri_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_tampak_kiri_agen' => $this->put('foto_tampak_kiri_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
 }
 ?>

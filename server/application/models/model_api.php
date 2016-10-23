@@ -84,6 +84,16 @@ class Model_api extends CI_Model{
 		}
     }
 	
+	//hitung jumlah agen
+	function getAllDataAgenNumber(){
+		$query = $this->db->query("select * from tbl_master_agen where agen_type='LAKU' order by id_agen desc");
+		if($query->num_rows() > 0) {
+        return $query->num_rows();
+		} else {
+            return $query->num_rows(); //if data is wrong
+		}
+    }
+	
 	//ambil data barang
 	function getItem()
 	{
@@ -347,6 +357,26 @@ class Model_api extends CI_Model{
             $kd = "0000001";
         }
         return "IND".$year.$month."i".$kd;
+    } 
+	
+	//ambil id new agen
+	public function getIDAgen()
+    {
+        $q = $this->db->query("select MAX(RIGHT(id_agen,5)) as kd_max from tbl_master_agen");
+        $kd = "";
+        if($q->num_rows()>0)
+        {
+            foreach($q->result() as $k)
+            {
+                $tmp = ((int)$k->kd_max)+1;
+                $kd = sprintf("%09s", $tmp);
+            }
+        }
+        else
+        {
+            $kd = "000000001";
+        }
+        return "A".$kd;
     } 
 	
 	//ambil data inventory agen

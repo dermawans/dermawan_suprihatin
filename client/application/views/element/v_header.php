@@ -147,6 +147,13 @@
 											<span>Item List</span>
 										</a>
 									</li>
+                                    <li class="nav-<?php if(isset($active_agen_list)){echo $active_agen_list ;}?>">
+										<a href="<?php echo site_url('agen')?>">
+											<span class="pull-right label label-primary"><?php echo $jumlah_agen ; ?></span>
+											<i class="fa fa-group" aria-hidden="true"></i>
+											<span>Agen List</span>
+										</a>
+									</li>
                                     <li class="nav-<?php if(isset($active_profile)){echo $active_profile ;}?>">
 										<a href="<?php echo site_url('profile')?>">
 											<i class="fa fa-user" aria-hidden="true"></i>
