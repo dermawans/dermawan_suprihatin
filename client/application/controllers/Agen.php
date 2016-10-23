@@ -127,8 +127,7 @@ class Agen extends CI_Controller{
 			$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
 			$config['file_name'] = $nmfile; //nama yang terupload nantinya
 	 
-			$this->upload->initialize($config);
-			$id_agen['id_agen']=$this->input->post('id_agen');
+			$this->upload->initialize($config); 
 					
 			if($_FILES['filetampakkananagen']['name'])
 			{
@@ -155,8 +154,7 @@ class Agen extends CI_Controller{
 			$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
 			$config['file_name'] = $nmfile; //nama yang terupload nantinya
 	 
-			$this->upload->initialize($config);
-			$id_agen['id_agen']=$this->input->post('id_agen');
+			$this->upload->initialize($config); 
 					
 			if($_FILES['filetampakkiriagen']['name'])
 			{
@@ -172,7 +170,7 @@ class Agen extends CI_Controller{
 				}
        		} 
 			
-			header('location:'.base_url().'agen_list');
+			header('location:'.base_url().'agen');
 	}
 	
 }

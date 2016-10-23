@@ -488,7 +488,7 @@ class Api extends REST_Controller
  	
 	 
     // tambah agen baru
-    function save_item_out_post() {
+    function save_new_agen_post() {
       	$data = array(
 			'id_agen' => $this->post('id_agen'),
 			'agen_name' => $this->post('agen_name'),
