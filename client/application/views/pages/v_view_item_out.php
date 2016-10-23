@@ -7,9 +7,9 @@
             </div>
 
  		<?php 
-        foreach($item_in_header as $row){
+        foreach($item_out_header as $row){
         ?>
-            <h2 class="panel-title">View Item In</h2>
+            <h2 class="panel-title">View Item Out</h2>
         </header>
         <div class="panel-body">
         <!-- start form -->
@@ -17,14 +17,14 @@
 		<div class="form-group">
         <label class="col-md-2 control-label">Date</label>
          	<div class="col-md-3">
-            	<input type="text" name="date_in" id="date_in" class="form-control" value="<?php echo date("d M Y",strtotime($row->date_in)); ?>" readonly>
+            	<input type="text" name="date_out" id="date_out" class="form-control" value="<?php echo date("d M Y",strtotime($row->date_out)); ?>" readonly>
         	</div>
         </div>
         
 		<div class="form-group">
         <label class="col-md-2 control-label">Receive Number</label>
          	<div class="col-md-3">
-            	<input type="text" class="form-control" name="id_item_in" id="id_item_in" value="<?php echo $row->id_item_in; ?>" readonly>
+            	<input type="text" class="form-control" name="id_item_out" id="id_item_out" value="<?php echo $row->id_item_out; ?>" readonly>
         	</div>
         </div>
           
@@ -37,7 +37,7 @@
          
 		<div class="form-group">
             <label class="col-md-2 control-label">Receive By</label>
-            <div class="col-md-3">
+            <div class="col-md-4">
             	<input type="text" class="form-control" name="receiver_name" id="receiver_name" value="<?php echo $row->agen_name; ?>" readonly>
             	<input type="hidden" class="form-control" name="id_receiver" id="id_receiver" value="<?php echo $row->id_agen; ?>" readonly>
             </div>
@@ -65,7 +65,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php $no=1; foreach($item_in_data as $row1){ ?>
+            <?php $no=1; foreach($item_out_data as $row1){ ?>
             	<tr class="gradeX">
                     <th><?php echo $no; ?></th> 
                     <th><?php echo $row1->category_name; ?></th>
@@ -81,7 +81,7 @@
             </tbody>
         </table>
         <div class="panel-body"> 
-            <a href="<?php echo site_url('item_in')?>" class="btn btn-sm btn-default"><i class="icon-remove-sign"></i> Back</a>
+            <a href="<?php echo site_url('item_out')?>" class="btn btn-sm btn-default"><i class="icon-remove-sign"></i> Back</a>
         </div> 
 					<?php } 
 				?> 

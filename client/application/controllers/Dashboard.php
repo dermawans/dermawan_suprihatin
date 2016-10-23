@@ -7,7 +7,7 @@ class Dashboard extends CI_Controller{
 		$this->API="http://localhost/dermawan_suprihatin/server";
         if($this->session->userdata('login_status') != TRUE ){
             $this->session->set_flashdata('notif','Silahkan Login Terlebih Dahulu !');
-            redirect('');
+            redirect('login');
         };
 		$data=array(); 
     }

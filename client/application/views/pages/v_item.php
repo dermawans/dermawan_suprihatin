@@ -53,8 +53,12 @@
                             <th><?php echo $row->status; ?></th>
                             <th><?php echo $row->contents; ?></th>
                             <th><?php echo $row->note; ?></th>
-                            <th><a class="btn btn-default btn-sm" href="<?php echo site_url('item/view/'.$row->id_item)?>">
-									<i class="fa fa-folder-open"></i> View</a>
+                            <th>
+                            	<?php echo form_open_multipart('item/view_item','id="wizard" class="form-horizontal"'); ?> 
+                                     <input type="hidden" class="form-control" name="id_item" id="id_item" value="<?php echo $row->id_item; ?>" readonly>
+                                     <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-folder-open"></i> View</button>
+								<?php echo form_close(); ?> 
+                                
                             </th>
 						</tr>
 					<?php }

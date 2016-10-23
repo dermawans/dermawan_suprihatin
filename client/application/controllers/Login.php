@@ -40,11 +40,10 @@ class Login extends CI_Controller
 						else
 						{
 							$this->session->set_flashdata('notif',$row->pesan);
-            				redirect('');
+							redirect('dashboard','refresh');
+							return FALSE;
 						}
 					}
-			
-			
 			}
     
 	

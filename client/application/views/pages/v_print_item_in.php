@@ -20,15 +20,15 @@
 		<div class="invoice">
 			<header class="clearfix">
 				<div class="row">
-					<div class="col-sm-6 mt-md">
+					<div class="col-sm-8 mt-md">
                             <h2 class="h2 mt-none mb-sm text-dark text-weight-bold">Receipt Item In</h2>
-                            <h4 class="h4 m-none text-dark text-weight-bold">Receipt Number : <?php echo $row->id_item_in; ?></h4>
+                            <h4 class="h4 m-none text-dark text-weight-bold">Receipt Number : <br><?php echo $row->id_item_in; ?></h4>
                         </div>
-                        <div class="col-sm-6 text-right mt-md mb-md">
+                        <div class="col-sm-4 text-right mt-md mb-md">
                             <address class="ib mr-xlg">
                                 <br />
-                               <div class="ib">
-                                  <!--  <img src="<?php echo base_url()?>assets/images/logo.png" alt="Indepay Logo" width="232px" height="78px"/>-->
+                               	<div class="ib">
+                               		<img src="<?php echo base_url()?>assets/images/logo.png" alt="Indepay Logo" width="232px" height="78px"/>
                                 </div>
                             </address>
                         </div>

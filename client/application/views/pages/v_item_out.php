@@ -1,3 +1,13 @@
+			<?php
+            $berhasil = $this->session->flashdata('berhasil');
+            $gagal = $this->session->flashdata('gagal');
+            if($berhasil){
+                echo '<p class="alert alert-info text-center">'.$berhasil .'</p>';
+            }
+			if($gagal){
+                echo '<p class="alert alert-danger text-center">'.$gagal .'</p>';
+            }
+			?>
  <section class="panel">
     <header class="panel-heading">
         <div class="panel-actions">
@@ -37,14 +47,21 @@
                                      <input type="hidden" class="form-control" name="id_item_out" id="id_item_out" value="<?php echo $row->id_item_out; ?>" readonly>
                                      <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-folder-open"></i> View</button>
 								<?php echo form_close(); ?> 
+                                
                                 <?php echo form_open_multipart('item_out/add_item_item_out','id="wizard" class="form-horizontal"'); ?> 
                                      <input type="hidden" class="form-control" name="id_item_out" id="id_item_out" value="<?php echo $row->id_item_out; ?>" readonly>
                                      <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> Add Item</button>
 								<?php echo form_close(); ?> 
-                                <?php echo form_open_multipart('item_out/print_item_out','id="wizard" class="form-horizontal"'); ?> 
+                                
+                                <?php echo form_open_multipart('item_out/print_work_order','id="wizard" class="form-horizontal"'); ?> 
                                      <input type="hidden" class="form-control" name="id_item_out" id="id_item_out" value="<?php echo $row->id_item_out; ?>" readonly>
-                                     <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print</button>
-								<?php echo form_close(); ?> 
+                                     <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print Work Order</button>
+								<?php echo form_close(); ?>  
+                                
+                                <?php echo form_open_multipart('item_out/print_tanda_terima_training','id="wizard" class="form-horizontal"'); ?> 
+                                     <input type="hidden" class="form-control" name="id_item_out" id="id_item_out" value="<?php echo $row->id_item_out; ?>" readonly>
+                                     <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print Tanda Terima Training</button>
+								<?php echo form_close(); ?>  
 								<!--<a class="btn btn-danger btn-sm" href="<?php echo site_url('item_out/hapus/'.$row->id_item_out)?>"
 								   onclick="return confirm('Anda Yakin ?');">
 									<i class="fa fa-trash-o"></i> Hapus</a>--> 

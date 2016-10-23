@@ -201,6 +201,39 @@ class Api extends REST_Controller
 			$this->response($user, 200);
 		}
 	
+	// ambil data header item out
+    function get_data_item_out_get() {
+      $id_item_out = $this->get('id_item_out');
+      	$query = $this->model_api->getItemOutHeader($id_item_out);
+			$this->response($query, 200);
+	}
+	
+	// show data item out data
+		function item_out_data_get() {
+        $id_item_out = $this->get('id_item_out');
+				$user = $this->model_api->getItemOutData($id_item_out);
+			$this->response($user, 200);
+		}
+	
+	//untuk item
+	
+	// show data item in data
+		function item_in_data_item_get() {
+        $id_item = $this->get('id_item');
+				$user = $this->model_api->getItemInItemData($id_item);
+			$this->response($user, 200);
+		}
+	
+	// show data item out data
+		function item_out_data_item_get() {
+        $id_item = $this->get('id_item');
+				$user = $this->model_api->getItemOutItemData($id_item);
+			$this->response($user, 200);
+		}
+	
+	//untuk item
+	
+	
 	// ambil data nomor baru item in
 		function get_id_item_in_get() { 
 				$user = $this->model_api->getIDItemIn();
@@ -248,8 +281,16 @@ class Api extends REST_Controller
 	
 	// ambil data agen yang belum dikasih keluar
 		function get_data_agen_not_out_get() { 
-				$user = $this->model_api->getDataAgenNotOut();
+		$user = $this->model_api->getDataAgenNotOut();
+		if ($user) 
+			{
 			$this->response($user, 200);
+			} 
+		else 
+			{
+			$user = $this->model_api->getDataAgen();
+			$this->response($user, 200);
+			}
 		}	
 	
 	// ambil data delivery service / giver
@@ -358,6 +399,48 @@ class Api extends REST_Controller
 		'inputer' => $this->post('inputer'));
 					
 		$insert = $this->db->insert('tbl_master_item_out', $data);
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+ 	
+	
+    // tambah item untuk barang keluar
+    function save_item_for_item_out_post() {
+      	$data = array(
+		'id_item_out' => $this->post('id_item_out'),
+		'id_item' => $this->post('id_item'),
+		'inputer' => $this->post('inputer'));
+					 
+		$insert = $this->db->insert('tbl_detail_item_out', $data);
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+	
+    // tambah item untuk barang keluar
+    function update_data_item_for_item_out_put() {
+		 
+        $id_item = $this->put('id_item'); 
+      	$data = array(
+		'id_item_out' => $this->put('id_item_out'),
+		'id_item' => $this->put('id_item'),
+		'last_edit_by' => $this->put('inputer'));
+					
+		$this->db->where('id_item', $id_item);
+        $update = $this->db->update('tbl_detail_item', $data);
+		 
 		
 		if ($insert) 
 		{

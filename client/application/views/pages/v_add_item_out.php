@@ -70,7 +70,7 @@
 		</div> 
         <div class="panel-body">
             <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-check-circle"></i> Save</button>
-            <a href="<?php echo site_url('item_in')?>" class="btn btn-sm btn-default"><i class="icon-remove-sign"></i> Cancel</a>
+            <a href="<?php echo site_url('item_out')?>" class="btn btn-sm btn-default"><i class="icon-remove-sign"></i> Cancel</a>
         </div> 
         <?php echo form_close(); ?> 
         <!-- end form -->	
