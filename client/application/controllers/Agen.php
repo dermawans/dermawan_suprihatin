@@ -63,10 +63,11 @@ class Agen extends CI_Controller{
 			//fungsi upload foto tampak depan
 			$this->load->library('upload');
 			$name=$this->input->post('agen_name');
+			$operational_name=$this->input->post('agen_operational_name');
 			$agen_city=$this->input->post('agen_city');
 			$agen_province=$this->input->post('agen_province');
-			$sales=$this->session->userdata('NAME');
-			$nmfile = $agen_city."-".$agen_province."-Tampak Depan Agen-".$name."-".$sales;  
+			$sales=$this->session->userdata('name');
+			$nmfile = $agen_city."-".$agen_province."-Tampak Depan Agen-".$operational_name."-".$name."-".$sales;  
 			$config['upload_path'] = 'assets/foto/'; 
 			$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';  
 	 		$config['file_name'] = $nmfile; 
@@ -92,10 +93,11 @@ class Agen extends CI_Controller{
 			//fungsi upload foto tampak seberang
 			$this->load->library('upload');
 			$name=$this->input->post('agen_name');
+			$operational_name=$this->input->post('agen_operational_name');
 			$agen_city=$this->input->post('agen_city');
 			$agen_province=$this->input->post('agen_province');
-			$sales=$this->session->userdata('NAME');
-			$nmfile = $agen_city."-".$agen_province."-Tampak Seberang Agen-".$name."-".$sales; 
+			$sales=$this->session->userdata('name');
+			$nmfile = $agen_city."-".$agen_province."-Tampak Seberang Agen-".$operational_name."-".$name."-".$sales; 
 			$config['upload_path'] = 'assets/foto/'; //path folder
 			$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';  
 	 		$config['file_name'] = $nmfile; //nama yang terupload nantinya
@@ -119,10 +121,11 @@ class Agen extends CI_Controller{
 			//fungsi upload foto tampak kanan
 			$this->load->library('upload');
 			$name=$this->input->post('agen_name');
+			$operational_name=$this->input->post('agen_operational_name');
 			$agen_city=$this->input->post('agen_city');
 			$agen_province=$this->input->post('agen_province');
-			$sales=$this->session->userdata('NAME');
-			$nmfile = $agen_city."-".$agen_province."-Tampak Kanan Agen-".$name."-".$sales; 
+			$sales=$this->session->userdata('name');
+			$nmfile = $agen_city."-".$agen_province."-Tampak Kanan Agen-".$operational_name."-".$name."-".$sales; 
 			$config['upload_path'] = 'assets/foto/'; //path folder
 			$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
 			$config['file_name'] = $nmfile; //nama yang terupload nantinya
@@ -146,10 +149,11 @@ class Agen extends CI_Controller{
 			//fungsi upload foto tampak kiri
 			$this->load->library('upload');
 			$name=$this->input->post('agen_name');
+			$operational_name=$this->input->post('agen_operational_name');
 			$agen_city=$this->input->post('agen_city');
 			$agen_province=$this->input->post('agen_province');
-			$sales=$this->session->userdata('NAME');
-			$nmfile = $agen_city."-".$agen_province."-Tampak Kiri Agen-".$name."-".$sales; 
+			$sales=$this->session->userdata('name');
+			$nmfile = $agen_city."-".$agen_province."-Tampak Kiri Agen-".$operational_name."-".$name."-".$sales; 
 			$config['upload_path'] = 'assets/foto/'; //path folder
 			$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
 			$config['file_name'] = $nmfile; //nama yang terupload nantinya
