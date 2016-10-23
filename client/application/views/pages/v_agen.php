@@ -410,7 +410,7 @@ if($gagal){
                               
                 <div class="form-group">
                         <div class="col-md-6">
-                            <input id="inputer" class="form-control" name="inputer" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input id="inputer" class="form-control" name="inputer" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -811,7 +811,7 @@ if($gagal){
                 <div class="form-group">
                         <div class="col-md-6">
                             <input class="form-control" name="last_edit_by_1" value="<?php echo $row1->last_edit_by; ?>" type="hidden" readonly>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                             <input class="form-control" name="date_of_submit_to_bca" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" type="hidden" readonly>
                             <input class="form-control" name="date_of_approve_or_reject_or_canceled" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" type="hidden" readonly>
                         </div>
@@ -1200,7 +1200,7 @@ if($gagal){
                 
                 <div class="form-group">
                         <div class="col-md-6">
-                            <input class="form-control" name="last_edit_by" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -1265,7 +1265,7 @@ if($gagal){
                  
                 <div class="form-group">
                         <div class="col-md-6">
-                            <input class="form-control" name="last_edit_by" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -1437,7 +1437,7 @@ if($gagal){
                 <div class="form-group">
                         <div class="col-md-6">
                             <input id="date_of_interested" class="form-control" name="date_of_interested" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" type="hidden" readonly>
-                            <input id="inputer" class="form-control" name="inputer" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input id="inputer" class="form-control" name="inputer" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -1665,7 +1665,7 @@ if($gagal){
                 <div class="form-group">
                         <div class="col-md-6">
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -1967,7 +1967,7 @@ if($gagal){
                 <div class="form-group">
                         <div class="col-md-6">
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -2271,7 +2271,7 @@ if($gagal){
                         <div class="col-md-6">
                             <input class="form-control" name="date_of_kyc_collected" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" type="hidden" readonly>
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -2575,7 +2575,7 @@ if($gagal){
                         <div class="col-md-6">
                             <input class="form-control" name="date_of_install" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" type="hidden" readonly>
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -2929,7 +2929,7 @@ if($gagal){
                 <div class="form-group">
                         <div class="col-md-6">
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -3286,7 +3286,7 @@ if($gagal){
                         <div class="col-md-6">
                             <input class="form-control" name="date_of_training" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" type="hidden" readonly>
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -3656,7 +3656,7 @@ if($gagal){
                 <div class="form-group">
                         <div class="col-md-6">
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -4026,7 +4026,7 @@ if($gagal){
                         <div class="col-md-6">
                             <input class="form-control" name="date_of_active" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d") ;  ?>" type="hidden" readonly>
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>
@@ -4414,7 +4414,7 @@ if($gagal){
                 <div class="form-group">
                         <div class="col-md-6">
                         <input type="hidden" name="last_edit_by_1" class="form-control" value="<?php echo $row1->last_edit_by;?>" readonly="readonly" required/>
-                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('NAME') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
+                            <input class="form-control" name="last_edit_by_2" value="<?php echo $this->session->userdata('name') ?> <?php date_default_timezone_set('Asia/Jakarta'); echo date("Y-m-d H:i:s") ;  ?>" type="hidden" readonly>
                         </div>
                 </div>
             </form>

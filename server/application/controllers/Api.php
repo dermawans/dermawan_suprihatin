@@ -604,5 +604,47 @@ class Api extends REST_Controller
 		}
 	}
 	
+    // update data agen
+    function update_data_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		
+			'id_agen' => $this-put('id_agen'),
+			'agen_name' => $this-put('agen_name'),
+			'status' => $this-put('status'),
+			'agen_phone_number_1' => $this-put('agen_phone_number_1'),
+			'agen_phone_number_2' => $this-put('agen_phone_number_2'),
+			'agen_address' => $this-put('agen_address'),
+			'agen_city' => $this-put('agen_city'),
+			'agen_province' => $this-put('agen_province'),
+			'longitude' => $this-put('longitude'),
+			'latitude' => $this-put('latitude'),
+			'terminal_id' => $this-put('terminal_id'),
+			'no_unique_agen' => $this-put('no_unique_agen'),
+			'virtual_account_number' => $this-put('virtual_account_number'),
+			'virtual_account_name' => $this-put('virtual_account_name'), 
+			'agen_operational_name' => $this-put('agen_operational_name'),
+			'agen_operational_address' => $this-put('agen_operational_address'),
+			'agen_nearest_branch' => $this-put('agen_nearest_branch'),
+			'agen_type' => $this-put('agen_type'),
+			'note' => $this-put('note'), 
+			'date_of_submit_to_bca' => $this-put('date_of_submit_to_bca'), 
+			'date_of_approve_or_reject_or_canceled' => $this-put('date_of_approve_or_reject_or_canceled'), 
+			'last_edit_by' => $this-put('last_edit_by'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
 }
 ?>
