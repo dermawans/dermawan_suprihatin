@@ -75,7 +75,7 @@
                     if(isset($item_not_out)){
                         foreach($item_not_out as $row){
                             ?>
-                    <option value="<?php echo $row->id_item;?>"><?php echo $row->item_name;?> - <?php echo $row->sn;?></option>
+                    <option value="<?php echo $row->id_item;?>"><?php echo $row->item_name;?> - <?php echo $row->id_item;?> - <?php echo $row->sn;?> - <?php echo $row->esn;?></option>
                         <?php
                         }
                     }

@@ -54,6 +54,7 @@
             <thead>
                 <tr>             
                     <th>No</th>
+                    <th>ID Item</th>
                     <th>Category</th>
                     <th>Item Name</th>
                     <th>ESN</th>
@@ -68,6 +69,7 @@
             <?php $no=1; foreach($item_in_data as $row1){ ?>
             	<tr class="gradeX">
                     <th><?php echo $no; ?></th> 
+                    <th><?php echo $row1->id_item_master_item; ?></th>
                     <th><?php echo $row1->category_name; ?></th>
                     <th><?php echo $row1->item_name; ?></th>
                     <th><?php echo $row1->esn; ?></th>

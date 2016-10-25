@@ -92,12 +92,15 @@ class Api extends REST_Controller
 		$data = array(
 					'id_user' => $this->post('id_user'),
 					'level' => "Agent",
-					'name' => $this->post('name'),
 					'email'=> $this->post('email'),
+					'username'=> $this->post('username'),
 					'password' => $this->post('password'),
+					'name' => $this->post('name'),
+					'id_agen' => $this->post('id_agen'),
 					'status' => $this->post('status'),
 					'tokencode' => $this->post('tokencode'),
-					'date_create' => $this->post('date_create'));
+					'date_create' => $this->post('date_create'),
+					'created' => $this->post('created'));
 					
 		$insert = $this->db->insert('tbl_master_user', $data);
 			if ($insert) 
@@ -470,6 +473,7 @@ class Api extends REST_Controller
         $id_item = $this->put('id_item'); 
       	$data = array(
 		'id_item_out' => $this->put('id_item_out'),
+		'id_agen' => $this->put('id_receiver'),
 		'id_item' => $this->put('id_item'),
 		'last_edit_by' => $this->put('inputer'));
 					
@@ -606,36 +610,377 @@ class Api extends REST_Controller
 	
     // update data agen
     function update_data_agen_put() {
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+			'id_agen' =>  $this->put('id_agen'),
+			'agen_name' =>  $this->put('agen_name'),
+			'status' =>  $this->put('status'),
+			'agen_phone_number_1' =>  $this->put('agen_phone_number_1'),
+			'agen_phone_number_2' =>  $this->put('agen_phone_number_2'),
+			'agen_address' =>  $this->put('agen_address'),
+			'agen_city' =>  $this->put('agen_city'),
+			'agen_province' =>  $this->put('agen_province'),
+			'longitude' =>  $this->put('longitude'),
+			'latitude' =>  $this->put('latitude'),
+			'terminal_id' =>  $this->put('terminal_id'),
+			'no_unique_agen' =>  $this->put('no_unique_agen'),
+			'virtual_account_number' =>  $this->put('virtual_account_number'),
+			'virtual_account_name' =>  $this->put('virtual_account_name'), 
+			'agen_operational_name' =>  $this->put('agen_operational_name'),
+			'agen_operational_address' =>  $this->put('agen_operational_address'),
+			'agen_nearest_branch' =>  $this->put('agen_nearest_branch'),
+			'agen_type' =>  $this->put('agen_type'),
+			'note' =>  $this->put('note'), 
+			'date_of_submit_to_bca' =>  $this->put('date_of_submit_to_bca'), 
+			'date_of_approve_or_reject_or_canceled' =>  $this->put('date_of_approve_or_reject_or_canceled'), 
+			'last_edit_by' =>  $this->put('last_edit_by'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto agen
+    function update_foto_agen_put() {
 		 
         $id_agen = $this->put('id_agen'); 
       	$data = array(
-		
-			'id_agen' => $this-put('id_agen'),
-			'agen_name' => $this-put('agen_name'),
-			'status' => $this-put('status'),
-			'agen_phone_number_1' => $this-put('agen_phone_number_1'),
-			'agen_phone_number_2' => $this-put('agen_phone_number_2'),
-			'agen_address' => $this-put('agen_address'),
-			'agen_city' => $this-put('agen_city'),
-			'agen_province' => $this-put('agen_province'),
-			'longitude' => $this-put('longitude'),
-			'latitude' => $this-put('latitude'),
-			'terminal_id' => $this-put('terminal_id'),
-			'no_unique_agen' => $this-put('no_unique_agen'),
-			'virtual_account_number' => $this-put('virtual_account_number'),
-			'virtual_account_name' => $this-put('virtual_account_name'), 
-			'agen_operational_name' => $this-put('agen_operational_name'),
-			'agen_operational_address' => $this-put('agen_operational_address'),
-			'agen_nearest_branch' => $this-put('agen_nearest_branch'),
-			'agen_type' => $this-put('agen_type'),
-			'note' => $this-put('note'), 
-			'date_of_submit_to_bca' => $this-put('date_of_submit_to_bca'), 
-			'date_of_approve_or_reject_or_canceled' => $this-put('date_of_approve_or_reject_or_canceled'), 
-			'last_edit_by' => $this-put('last_edit_by'));
+		'foto_agen' => $this->put('foto_agen'));
 					
 		$this->db->where('id_agen', $id_agen);
         $update = $this->db->update('tbl_master_agen', $data);
 		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto ktp agen
+    function update_foto_ktp_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_ktp' => $this->put('foto_ktp'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto form pengajuan agen
+    function update_foto_form_pengajuan_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_form_pengajuan_agen' => $this->put('foto_form_pengajuan_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto cover buku tabungan agen
+    function update_foto_cover_buku_tabungan_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_cover_buku_tabungan' => $this->put('foto_cover_buku_tabungan'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto npwp atau surat keterangan tidak punya
+    function update_foto_npwp_atau_surat_keterangan_tidak_punya_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_npwp_atau_surat_keterangan_tidak_punya' => $this->put('foto_npwp_atau_surat_keterangan_tidak_punya'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto surat keterangan usaha atau bapu
+    function update_foto_surat_keterangan_usaha_atau_bapu_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_surat_keterangan_usaha_atau_bapu' => $this->put('foto_surat_keterangan_usaha_atau_bapu'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto install mesin
+    function update_foto_instalasi_mesin_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_instalasi_mesin_agen' => $this->put('foto_instalasi_mesin_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto training agen
+    function update_foto_training_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_training_agen' => $this->put('foto_training_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto spanduk agen
+    function update_foto_spanduk_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_spanduk_agen' => $this->put('foto_spanduk_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto sertifikat agen
+    function update_foto_sertifikat_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_sertifikat_agen' => $this->put('foto_sertifikat_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto pks agen
+    function update_foto_pks_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_pks_agen' => $this->put('foto_pks_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+    // tambah foto aktifasi agen
+    function update_foto_aktifasi_agen_put() {
+		 
+        $id_agen = $this->put('id_agen'); 
+      	$data = array(
+		'foto_aktifasi_agen' => $this->put('foto_aktifasi_agen'));
+					
+		$this->db->where('id_agen', $id_agen);
+        $update = $this->db->update('tbl_master_agen', $data);
+		 
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+	
+	// ambil data item agen header
+    function get_agen_item_header_get() {
+      $id_agen = $this->get('id_agen');
+      	$query = $this->model_api->getDataItemAgenHeader($id_agen);
+		if ($query) 
+		{
+			$this->response($query, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+	// show data item agen body
+	function get_agen_item_get() {
+        $id_agen = $this->get('id_agen');
+		$query = $this->model_api->getDataItemAgen($id_agen);
+		if ($query) 
+		{
+			$this->response($query, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+	
+	// ambil data master level user
+		function data_master_level_user_get() { 
+            $user = $this->db->get('tbl_master_level_user')->result();
+			$this->response($user, 200);
+		}
+	
+	// ambil data master delivery service
+		function data_master_delivery_service_get() { 
+            $user = $this->db->get('tbl_master_delivery_service')->result();
+			$this->response($user, 200);
+		}
+		
+	// ambil data master agen type
+		function data_master_agen_type_get() { 
+            $user = $this->db->get('tbl_master_agen_type')->result();
+			$this->response($user, 200);
+		}
+	
+	// ambil data master status agen
+		function data_master_status_agen_get() { 
+            $user = $this->db->get('tbl_master_status_agen')->result();
+			$this->response($user, 200);
+		}
+	
+	// ambil data master kategori barang
+		function data_master_category_get() { 
+            $user = $this->db->get('tbl_master_category')->result();
+			$this->response($user, 200);
+		}
+		
+	// ambil data master user
+		function data_master_user_get() { 
+            $user = $this->db->get('tbl_master_user')->result();
+			$this->response($user, 200);
+		}
+		
+	// ambil data master agen
+		function data_master_agen_get() { 
+            $user = $this->db->get('tbl_master_agen')->result();
+			$this->response($user, 200);
+		}
+		
+		
+	// ambil data nomor baru untuk user
+		function get_id_user_get() { 
+				$user = $this->model_api->getIDUser();
+			$this->response($user, 200);
+		}
+	
+	
+    // tambah data user
+    function add_user_post() {
+      	$data = array( 
+			'id_user'  => $this->post('id_user'),
+			'level'  => $this->post('level'),
+			'email'  => $this->post('email'),
+			'username'  => $this->post('username'),
+			'password' => $this->post('password'),
+			'name'  => $this->post('name'),
+			'id_agen' => $this->post('id_agen'),
+			'status' => $this->post('status'),
+			'tokencode' => $this->post('tokencode'),
+			'date_create'  => $this->post('date_create'),
+			'created'  => $this->post('created'));
+					 
+		$insert = $this->db->insert('tbl_master_user', $data);
 		
 		if ($insert) 
 		{
@@ -646,5 +991,44 @@ class Api extends REST_Controller
 		}
 	}
 	
+	
+    // tambah delivery service
+    function add_delivery_service_post() {
+      	$data = array( 
+			'delivery_service_name'  => $this->post('delivery_service_name'),
+			'inputer'  => $this->post('inputer'));
+					 
+		$insert = $this->db->insert('tbl_master_delivery_service', $data);
+		
+		if ($insert) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
+	
+	
+    // simpan edit delivery service
+    function save_delivery_service_put() {
+		
+		$id_delivery_service = $this->put('id_delivery_service');
+      	$data = array( 
+			'id_delivery_service'  => $this->put('id_delivery_service'),
+			'delivery_service_name'  => $this->put('delivery_service_name'),
+			'last_edit_by'  => $this->put('last_edit_by'));
+		
+		$this->db->where('id_delivery_service', $id_delivery_service);
+        $update = $this->db->update('tbl_master_delivery_service', $data);
+		
+		if ($update) 
+		{
+			$this->response($data, 200);
+		} else 
+		{
+			$this->response(array('status' => 'fail', 502));
+		}
+	}
 }
 ?>

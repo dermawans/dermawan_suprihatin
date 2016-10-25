@@ -415,7 +415,7 @@ class Model_api extends CI_Model{
     }
 	
 	function getDataItemNotOut(){
-		return $this->db->query("select
+		$query = $this->db->query("select
 		a.id_item, a.item_name, a.esn, a.sn, a.total, a.status, a.contents, a.note as note_item, a.inputer,
 		b.id_category, b.id_item_in, b.id_item_out,
 		c.id_item_out,
@@ -432,21 +432,89 @@ class Model_api extends CI_Model{
 		where c.id_item_out is null
 		order by a.id_item desc
 "
-		)->result();
+		);
+		if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
 	}
 	
 	function getDataAgenNotOut(){
-		return $this->db->query("select
+		$query = $this->db->query("select
 		a.id_agen,a.agen_name,a.agen_operational_name, a.agen_type, a.status,
 		b.id_receiver
 		from  tbl_master_agen a 
 		left join tbl_master_item_out b on a.id_agen=b.id_receiver
 		where a.agen_type='Laku' and a.status='Approve' and b.id_receiver IS NULL
 		 order by a.id_agen desc"
-		)->result();
+		);
+		if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
+	}
+	
+	function getDataItemAgenHeader($id_agen){
+	$query = $this->db->query("
+		select distinct
+		c.id_item_out,
+		d.id_sender, d.id_receiver, d.date_out, d.note,
+		e.id_agen, e.agen_name, e.agen_operational_name,
+		f.id_delivery_service,f.delivery_service_name
+		
+		from tbl_detail_item_out c 
+		left join tbl_master_item_out d on c.id_item_out=d.id_item_out
+		left join tbl_master_agen e on d.id_receiver=e.id_agen
+		left join tbl_master_delivery_service f on d.id_sender=f.id_delivery_service  
+		where e.id_agen ='".$id_agen."' 
+		");
+		if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
+	}
+	
+	function getDataItemAgen($id_agen){
+	$query = $this->db->query("
+		select a.id_item, a.item_name, a.esn, a.sn, a.total, a.status, a.contents, a.note as note_item,
+		b.id_category, b.id_item_in, b.id_item_out, b.id_agen
+		 
+		
+		from tbl_master_item a 
+		left join tbl_detail_item b on a.id_item=b.id_item    
+		where b.id_agen ='".$id_agen."' 
+		order by a.id_item asc
+		");
+		if($query->num_rows() > 0) {
+        return $query->result();
+		} else {
+            return $query->result(); //if data is wrong
+		}
 	}
 	
 	
+	public function getIDUser()
+	{
+		$q = $this->db->query("select MAX(RIGHT(id_user,3)) as kd_max from tbl_master_user");
+		$kd = "";
+		if($q->num_rows()>0)
+		{
+			foreach($q->result() as $k)
+			{
+				$tmp = ((int)$k->kd_max)+1;
+				$kd = sprintf("%03s", $tmp);
+			}
+		}
+		else
+		{
+			$kd = "001";
+		}
+		return "U-".$kd;
+	}
+
 }
 ?>
 	 

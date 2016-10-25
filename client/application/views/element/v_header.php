@@ -64,7 +64,7 @@
 			<header class="header">
 				<div class="logo-container">
 					<a href="../" class="logo">
-						<!--<img src="<?php echo base_url('assets/images/logo.png')?>" height="35" alt="Logo" />-->
+						<img src="<?php echo base_url('assets/images/logo.png')?>" height="35" alt="Logo" />
 					</a>
 					<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
 						<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -154,12 +154,13 @@
 											<span>Agen List</span>
 										</a>
 									</li>
-                                    <li class="nav-<?php if(isset($active_profile)){echo $active_profile ;}?>">
-										<a href="<?php echo site_url('profile')?>">
-											<i class="fa fa-user" aria-hidden="true"></i>
-											<span>Profile</span>
-										</a>
-									</li>
+									<li class="nav-<?php if(isset($active_master_data)){echo $active_master_data ;}?>">
+										<a href="<?php echo site_url('master_data')?>">
+											<span class="pull-right label label-primary"></span>
+											<i class="fa fa-connectdevelop" aria-hidden="true"></i>
+											<span>Master Data</span>
+										</a> 
+									</li> 
                                 </ul>
 							</nav>
 						</div>

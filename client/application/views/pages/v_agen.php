@@ -1208,8 +1208,11 @@ if($gagal){
         <footer class="panel-footer">
             <div class="row">
                 <div class="col-md-12 text-right"> 
-                	<a class="btn btn-defult btn-primary" href="<?php echo site_url('agen_list/detail_agen/'.$row1->id_agen)?>">View Agent Item</a>
-                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                <?php echo form_open_multipart('agen/view_agen_item','id="wizard" class="form-horizontal"'); ?> 
+                     <input type="hidden" class="form-control" name="id_agen" id="id_agen" value="<?php echo $row1->id_agen; ?>" readonly>
+                     <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-folder-open"></i> View Agen Item</button>
+                <?php echo form_close(); ?> 
+                    <button class="btn btn-default btn-sm modal-dismiss">Cancel</button>
                 </div>
             </div>
         </footer>

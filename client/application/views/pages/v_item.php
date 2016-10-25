@@ -25,6 +25,7 @@
             <thead>
                 <tr>                                 
                     <th>No</th> 
+                    <th>ID Item</th>
                     <th>Category</th>
                     <th>Item Name</th>
                     <th>ESN</th>
@@ -45,6 +46,7 @@
 						?>
                         <tr class="gradeX">
                             <th><?php echo $no++; ?></th>
+                            <th><?php echo $row->id_item; ?></th>
                             <th><?php echo $row->category_name; ?></th>
                             <th><?php echo $row->item_name; ?></th>
                             <th><?php echo $row->esn; ?></th>

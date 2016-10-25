@@ -93,6 +93,7 @@ class Item_out extends CI_Controller{
 	function save_item_item_out(){
 		$data = array( 
 		'id_item_out' => $this->input->post('id_item_out'),
+		'id_receiver' => $this->input->post('id_receiver'),
 		'id_item' => $this->input->post('id_item'),
 		'inputer' => $this->input->post('inputer'));
 		$insert =  $this->curl->simple_post($this->API.'/api/save_item_for_item_out', $data, array(CURLOPT_BUFFERSIZE => 10)); 
